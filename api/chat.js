@@ -37,8 +37,9 @@ function ChatAPI () {
         if(error){
             console.log(error);
             res.status(500).send(error);
+            return;
         }
-        console.log('Message sent: ' + info.response);
+        console.log('Message sent: ' + JSON.stringify(info));
         res.status(200).send({chatUrl : chatUrl});
     });
   };
