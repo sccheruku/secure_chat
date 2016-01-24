@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/saichaitanya88/secure_chat/issues"
   },
-  "homepage": "https://github.com/saichaitanya88/secure_chat"
+  "homepage": "https://github.com/saichaitanya88/secure_chat","engines": {
+     "node": "0.8.19",
+   "npm": "1.1.x"
+   }
 }
