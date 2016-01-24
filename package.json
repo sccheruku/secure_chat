@@ -1,0 +1,27 @@
+{
+  "name": "secure_chat",
+  "version": "1.0.0",
+  "description": "Real-time Push Notifications in a Distributed Environment with NodeJS, RethinkDB and Socket.IO",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "nodemailer": "^2.0.0",
+    "consolidate": "^0.13.1",
+    "socket.io": "^1.4.4",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saichaitanya88/secure_chat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saichaitanya88/secure_chat/issues"
+  },
+  "homepage": "https://github.com/saichaitanya88/secure_chat"
+}
