@@ -1,0 +1,14 @@
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+<script>
+
+var message = "hello world1!!!"
+
+var encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase");
+// AABsAABkAABiAAAAAAAAAABNAABlAABPAAC0AABHAAA=
+
+var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+// 4d657373616765
+
+decrypted.toString(CryptoJS.enc.Utf8);
+// Message
+</script>

@@ -1,0 +1,5 @@
+1. node app to connect sockets by url
+2. angular app to do the following: 
+	- allow users to create chat rooms - sends chatroom id (guid - mongodb since it's datetime based) and sends a passphrase
+	- allow users to join chatrooms (join by url, and then use passphrase when the users gets on the page)
+	- chat messages are decrypted and encrypted as they are received and sent

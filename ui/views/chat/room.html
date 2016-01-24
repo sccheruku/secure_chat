@@ -1,0 +1,21 @@
+<script>
+  var chatKey = window.prompt("Enter the chat key",'');
+  while(!chatKey || chatKey.trim() == ''){
+    chatKey = window.prompt("Enter the chat key","");
+  }
+</script>
+<div class="row" ng-controller="ChatCtrl">
+	<form class="form-horizontal" name="contactForm">
+    <div class="row">
+      <ul>
+        <li>messages</li>
+        <li>go</li>
+        <li>here</li>
+      </ul>
+    </div>
+    <div>
+      <input type="text" name="name" ng-model="name" />
+      <textarea ng-model="chatText"></textarea><button ng-click="Methods.SendMessage(name, chatText)" type="button">Send</button>
+    </div>
+</form>
+</div>
