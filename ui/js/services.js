@@ -1,6 +1,6 @@
 var services = angular.module('services', ['ngResource']);
 
-services.factory('ContactService', function($http) {
+services.factory('ChatService', function($http) {
 	function httpRequest(request, successCallback, errorCallback){
 		$http(request).success(function(data, status){
 			successCallback(data, status);})
@@ -9,24 +9,10 @@ services.factory('ContactService', function($http) {
 				errorCallback(data, status);
 			});
 	}
-	var Search = function(params, successCallback, errorCallback) {
-    httpRequest({method: "GET", url: "/api/contacts" }, successCallback, errorCallback);
+	var Invite = function(inviter, invitees, successCallback, errorCallback) {
+    httpRequest({method: "POST", url: "/api/invite", data: {inviter: inviter, invitees: invitees} }, successCallback, errorCallback);
   };
-  var Create = function(contact, successCallback, errorCallback) {
-    httpRequest({method: "POST", url: "/api/contact", data: contact }, successCallback, errorCallback);
-  };
-  var Get = function(id, successCallback, errorCallback) {
-    httpRequest({method: "GET", url: "/api/contact/" + id }, successCallback, errorCallback);
-  };
-  var Update = function(contact, successCallback, errorCallback) {
-    httpRequest({method: "PUT", url: "/api/contact/" + contact.id , data: contact }, successCallback, errorCallback);
-    sessionStorage.awaitEvent = 'updated:' + contact.id;
-  };
-  var Delete = function(id, successCallback, errorCallback) {
-    httpRequest({method: "DELETE", url: "/api/contact/" + id}, successCallback, errorCallback);
-    sessionStorage.awaitEvent = 'deleted:' + contact.id;
-  };
-  return { Search: Search, Create: Create, Get: Get, Update: Update, Delete: Delete };
+  return { Invite: Invite };
 });
 
 services.factory("SocketService", function(){

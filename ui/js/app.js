@@ -7,7 +7,7 @@ function($routeProvider) {
   $routeProvider.
   when('/', {
       templateUrl: 'views/chat/index.html',
-      controller: 'ChatCtrl',
+      controller: 'ChatMainCtrl',
       title: "Secure Chat"
     }).
   when('/chat/:id', {

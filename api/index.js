@@ -1,7 +1,7 @@
-//var ContactsAPI = require('./contacts').ContactsAPI;
+var ChatAPI = require('./chat').ChatAPI;
 
 module.exports = exports = function(app) {
-  //var contactsUI = new ContactsAPI();
+  var chatAPI = new ChatAPI();
 
   // Home Page
   app.get('/', function(req,res){
@@ -9,7 +9,7 @@ module.exports = exports = function(app) {
   });
 
   // // Contact Actions
-  // app.get("/api/contacts", contactsUI.GetContacts);
+  app.post("/api/invite", chatAPI.Invite);
   // app.get("/api/contact/:id", contactsUI.GetContact);
   // app.put("/api/contact/:id", contactsUI.UpdateContact);
   // app.post("/api/contact", contactsUI.CreateContact);
