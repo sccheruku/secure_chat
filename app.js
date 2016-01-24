@@ -20,8 +20,7 @@ app.use(express.static('ui'));
 Api(app);
 
 var port = process.env.PORT;
-//if (!port) 
-	port = 80;
+if (!port) port = 80;
 
 var server = app.listen(port);
 console.log('Express server started on port: ' + port);
