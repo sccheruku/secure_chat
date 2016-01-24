@@ -6,6 +6,7 @@ function ChatAPI () {
 
   var smtpSettings = "smtps://" + process.env.smtp_email + ":" + process.env.smtp_pass + "@smtp.gmail.com";
   var transporter = nodemailer.createTransport(smtpSettings);//'smtps://squashleaguemailer@gmail.com:squashleaguemailer123!@smtp.gmail.com');
+  console.log(smtpSettings);
 
   this.Invite = function(req, res){
 
