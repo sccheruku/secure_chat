@@ -17,31 +17,19 @@ services.factory('ChatService', function($http) {
 
 services.factory("SocketService", function(){
 	var socket = io();
-  socket.on('joined', function(msg){
-    updateRoom(msg);
+  socket.on('joinedRoom', function(msg){
+    updateRoom('joinedRoom', msg);
   });
-  socket.on('updated', function(msg){
-  	updateContact(msg, 'updated');
+  socket.on('messageRecieved', function(msg){
+    updateRoom('messageRecieved',msg);
   });
-  socket.on('created', function(msg){
-  	updateContact(msg, 'created');
+  socket.on('leaveRoom', function(msg){
+    updateRoom('leaveRoom',msg);
   });
-  socket.on('deleted', function(msg){
-  	updateContact(msg, 'deleted');
-  });
-  function updateContact(msg, event){
-  	updateRoom(msg);
-  	if (window.location.hash == '#/'){
-    	angular.element('[ng-controller="ContactCtrl"]').scope().Methods.GetContacts();
-    	angular.element('[ng-controller="ContactCtrl"]').scope().$apply();
-    }
-    angular.element('[ng-controller="ContactCtrl"]').scope().Methods.OnServerEvent(msg, event);
-    angular.element('[ng-controller="ContactCtrl"]').scope().$apply();
+  function updateRoom(event, msg){
+    // Is there a better way? 
+    angular.element('[ng-controller="ChatCtrl"]').scope().Methods.UpdateRoom(event, msg);
+    angular.element('[ng-controller="ChatCtrl"]').scope().$apply();
   }
-  function updateRoom(msg){
-  	// Is there a better way? 
-		angular.element('[ng-controller="StreamCtrl"]').scope().updates.push(msg);
-    angular.element('[ng-controller="StreamCtrl"]').scope().$apply();
-  }
-  return { socket: socket }
+  return { socket: socket, updateRoom: updateRoom }
 });

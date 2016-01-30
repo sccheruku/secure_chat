@@ -1,16 +1,33 @@
 <div class="row" ng-controller="ChatCtrl">
-	<form class="form-horizontal" name="contactForm" style="height:100%;">
+	<form class="form-horizontal" name="contactForm">
     <div class="row">
       <div class="col-xs-12">
         <div ng-repeat="message in messages track by $index">
-          <p ng-bind-html-unsafe="message"></p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <strong>{{message.name}}: </strong>
+              <i>{{message.message}}</i>
+              <small class='pull-right'>({{message.time}})</small>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div style="position: fixed; bottom: 0;">
-      <input type="text" name="name" ng-model="name" />
-      <textarea ng-model="chatText"></textarea>
-      <button ng-click="Methods.SendMessage(name, chatText)" type="button">Send</button>
+    <div class="row">
+      <label class="col-xs-12">Chat Key</label>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <input type="password" ng-model="chatKey" required class='form-control'/>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom:10px;">
+      <div class="col-xs-3 col-sm-2">
+        <textarea required ng-model="name" class='form-control' style="resize:none;" ng-blur="Methods.JoinRoom();" ng-disabled='joinedRoom' placeholder="Name" required></textarea>
+      </div>
+      <div class="col-xs-9 col-sm-10">
+        <textarea ng-model="chatText" class='form-control' style="resize:none;" ng-enter="Methods.SendMessage();" placeholder="Message"></textarea>
+      </div>
     </div>
 </form>
 </div>

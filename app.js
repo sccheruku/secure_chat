@@ -29,11 +29,13 @@ var io = require('socket.io').listen(server);
 io.on('connection', function(socket){
 	socket.on('disconnect', function(msg){
   });
-  socket.on('join', function(msg){
-  	console.log(msg.room);
+  socket.on('joinRoom', function(msg){
+  	//console.log(msg.room);
     socket.join(msg.room);
-    var info = msg.user + " joined";
-    io.to(msg.room).emit('joined', { info: info });
+    socket.broadcast.to(msg.room).emit('joinedRoom', msg.message);
+  });
+  socket.on('sendMessage', function(msg){
+    socket.broadcast.to(msg.room).emit('messageRecieved', msg.message);
   });
 });
 console.log('SocketIO Listening');
