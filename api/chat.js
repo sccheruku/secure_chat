@@ -19,9 +19,10 @@ function ChatAPI () {
     var hostname = req.headers.host;
     var passkey = faker.internet.password();
     var chatUrl = hostname + "/#/chat/" + chatId; //+ "?key=" + passkey;
-    
+    var easyUrl = hostname + "/#/chat/" + chatId + "?key=" + passkey;
     var emailMessage = "Hello, You've been invited for a chat by " + req.body.inviter;
-    emailMessage = emailMessage + ". Click <a href='http://" + chatUrl + "'>here</a> to join the chat. Your passkey is: " + passkey;
+    emailMessage = emailMessage + ". Click <a href='http://" + chatUrl + "'>here</a> to join the chat. Your passkey is: " + passkey 
+    emailMessage = emailMessage + "<br/> Alternatively, click <a href='http://" + easyUrl + "'>here</a> for easy log in. (less secure)";
 
     // Sends email to inviter and invitees
     var mailOptions = {

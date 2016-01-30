@@ -35,7 +35,8 @@ ctrls.controller('ChatCtrl', ['$scope', '$http', '$location', '$routeParams', 'C
   function($scope, $http, $location, $routeParams, ChatService, SocketService) {
   	$scope.Methods = {};
     $scope.messages = [];
-  	//$scope.chatKey = $routeParams.key;
+    if ($routeParams.key)
+  	  $scope.chatKey = $routeParams.key;
     $scope.Methods.SendMessage = function(){
       if (!$scope.contactForm.$valid) return;
       if (!$scope.chatText) return;
