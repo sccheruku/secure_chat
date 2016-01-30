@@ -41,7 +41,7 @@ function ChatAPI () {
             return;
         }
         console.log('Message sent: ' + JSON.stringify(info));
-        res.status(200).send({chatUrl : chatUrl});
+        res.status(200).send({chatUrl : easyUrl});
     });
   };
   function executeQuery(fn){
